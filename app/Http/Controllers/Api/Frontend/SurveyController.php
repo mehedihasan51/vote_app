@@ -12,7 +12,7 @@ class SurveyController extends Controller
 
     public function show()
     {
-        $surveys = Survey::where('status', 'active')->get(); // returns collection
+        $surveys = Survey::where('status', 'active')->get();
     
         $data = $surveys->map(function ($survey) {
             return [

@@ -77,6 +77,9 @@
                                         </div>
 
                                         <div class="row" id="opinion_list">
+                                            @error('opinion')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                             @foreach ($survey->opinions as $opinion)
                                                 <div class="col-md-12 opinion-item">
                                                     <div class="form-group">
@@ -86,6 +89,8 @@
                                                         <input type="text" class="form-control"
                                                             name="opinion[{{ $loop->index }}][text]"
                                                             value="{{ $opinion->opinion }}" placeholder="Enter opinion">
+
+
                                                     </div>
                                                     <div class="form-group">
                                                         <button onclick="removeOpinion(`{{ $opinion->id }}`, this)"
@@ -139,7 +144,6 @@
                 <button onclick="removeNewOpinion(this)" class="btn btn-danger" type="button">Remove</button>
             </div>
               `;
-
 
             opinionList.appendChild(row);
             opinionCount++;

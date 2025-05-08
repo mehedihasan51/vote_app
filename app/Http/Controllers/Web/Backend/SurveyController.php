@@ -81,7 +81,7 @@ class SurveyController extends Controller
             'title'             => 'required|max:250',
             'end_date'          => 'nullable|date|after_or_equal:today',
             'description'       => 'nullable|string',
-            'opinion'           => 'required|array|min:1',
+            'opinion'           => 'required|array|min:4|max:10',
             'opinion.*'         => 'required|string',
         ]);
 
@@ -144,7 +144,7 @@ class SurveyController extends Controller
             'title'            => 'required|max:250',
             'end_date'         => 'nullable|date|after_or_equal:today',
             'description'      => 'nullable|string',
-            'opinion'          => 'required|array|min:1',
+            'opinion'           => 'required|array|min:4|max:10',
             'opinion.*.text'   => 'required|string',
             'opinion.*.id'     => 'nullable|integer|exists:survey_opinions,id',
         ]);
@@ -161,13 +161,11 @@ class SurveyController extends Controller
 
             $survey = Survey::findOrFail($id);
 
-            // ✅ Proper Eloquent update
             $survey->update([
                 'title'       => $data['title'],
                 'end_date'    => $data['end_date'],
                 'description' => $data['description'],
             ]);
-
 
             foreach ($data['opinion'] as $opinion) {
                 if (!empty($opinion['id'])) {
