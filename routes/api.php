@@ -64,7 +64,6 @@ Route::get('/survey/details',[SurveyController::class,'show']);
 
 Route::post('/vote/{survey}', [SurveyVoteController::class, 'showResults'])->middleware('auth:api');
 
-
 /*
 # Auth Route
 */
