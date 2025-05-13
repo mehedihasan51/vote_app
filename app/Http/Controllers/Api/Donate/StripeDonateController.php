@@ -24,7 +24,7 @@ class StripeDonateController extends Controller
                     'product_data' => [
                         'name' => 'Campaign Donation',
                     ],
-                    'unit_amount' => $amount * 100, // in cents
+                    'unit_amount' => $amount * 100, 
                 ],
                 'quantity' => 1,
             ]],

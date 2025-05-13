@@ -26,6 +26,7 @@ use App\Http\Controllers\Api\Frontend\ContactController;
 use App\Http\Controllers\Api\Frontend\categoryController;
 use App\Http\Controllers\Api\Auth\ResetPasswordController;
 use App\Http\Controllers\Api\Donate\StripeDonateController;
+use App\Http\Controllers\Api\Donate\StripeWebhookController;
 use App\Http\Controllers\Api\Frontend\SurveyVoteController;
 use App\Http\Controllers\Api\Frontend\SubcategoryController;
 
@@ -143,5 +144,6 @@ Route::prefix('cms')->name('cms.')->group(function () {
 });
 
 
-
+Route::post('/stripe/webhook', [StripeWebhookController::class, 'handle']);
 Route::post('/create-checkout-session', [StripeDonateController::class, 'createCheckoutSession']);
+
