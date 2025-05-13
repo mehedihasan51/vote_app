@@ -1,8 +1,8 @@
 <?php
-
-use App\Http\Controllers\Api\Gateway\Stripe\StripeOnBoardingController;
-use App\Http\Controllers\Api\Gateway\Stripe\StripeWebHookController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\Donate\StripeDonateController;
+use App\Http\Controllers\Api\Gateway\Stripe\StripeWebHookController;
+use App\Http\Controllers\Api\Gateway\Stripe\StripeOnBoardingController;
 
 //stripe webhook
 Route::controller(StripeWebHookController::class)->prefix('payment/stripe')->name('payment.stripe.')->group(function () {
@@ -19,3 +19,11 @@ Route::controller(StripeOnBoardingController::class)->prefix('payment/stripe/acc
     Route::middleware(['auth:api'])->get('/info', 'accountInfo')->name('info');
     Route::middleware(['auth:api'])->post('/withdraw', 'withdrawRequest')->name('withdraw');
 });
+
+
+// Route::controller(StripeDonateController::class)->group(function(){
+//     Route::get('stripe', 'stripe');
+//     Route::post('stripe', 'stripePost')->name('stripe.post');
+// });
+
+// Route::post('/create-checkout-session', [StripeDonateController::class, 'createCheckoutSession']);

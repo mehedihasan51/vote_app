@@ -25,6 +25,7 @@ use App\Http\Controllers\Api\Auth\SocialLoginController;
 use App\Http\Controllers\Api\Frontend\ContactController;
 use App\Http\Controllers\Api\Frontend\categoryController;
 use App\Http\Controllers\Api\Auth\ResetPasswordController;
+use App\Http\Controllers\Api\Donate\StripeDonateController;
 use App\Http\Controllers\Api\Frontend\SurveyVoteController;
 use App\Http\Controllers\Api\Frontend\SubcategoryController;
 
@@ -140,3 +141,7 @@ Route::middleware(['auth:api'])->controller(ChatController::class)->prefix('both
 Route::prefix('cms')->name('cms.')->group(function () {
     Route::get('home', [HomeController::class, 'index'])->name('home');
 });
+
+
+
+Route::post('/create-checkout-session', [StripeDonateController::class, 'createCheckoutSession']);
